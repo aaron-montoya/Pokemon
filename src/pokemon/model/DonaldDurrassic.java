@@ -30,7 +30,7 @@ public class DonaldDurrassic extends Pokemon implements Jurrassic, Politician
 	
 	public String offensiveSpeech()
 	{
-		return "";
+		return "The people of Iran are finally acting against the brutal and corrupt Iranian regime. All of the money that President Obama so foolishly gave them went into terrorism and into their “pockets.” The people have little food, big inflation and no human rights. The U.S. is watching!";
 	}
 
 	public int countVotes()
