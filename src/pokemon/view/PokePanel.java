@@ -2,12 +2,12 @@ package pokemon.view;
 
 import javax.swing.*;
 import pokemon.controller.PokeController;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PokePanel extends JPanel
 {
-	public PokePanel() {
-	}
-	
 	private PokeController appController;
 	private SpringLayout appLayout;
 	
@@ -37,6 +37,43 @@ public class PokePanel extends JPanel
 	private JPanel secondType;
 	private JPanel thirdType;
 	private JPanel fourthType;
+	
+	public PokePanel() {
+		super();
+		
+		//Initialize GUI Members
+		healthLabel = new JLabel("");
+		attackLabel = new JLabel("");
+		nameLabel = new JLabel("");
+		numberLabel = new JLabel("");
+		evolvableLabel = new JLabel("");
+		modifierLabel = new JLabel("");
+		iconLabel = new JLabel("");
+		
+		evolvableBox = new JCheckBox();
+		nameField = new JTextField(20);
+		numberField = new JTextField(20);
+		attackField = new JTextField(20);
+		healthField = new JTextField(20);
+		modifierField = new JTextField(20);
+		
+		descArea = new JTextArea(10, 25);
+		typeArea = new JTextArea(10, 25);
+		
+		saveButton = new JButton("Save");
+		clearButton = new JButton("Clear");
+		pokedexDropdown = new JComboBox();
+	}
+	
+	private void setupPanel()
+	{
+		this.setLayout(appLayout);
+	}
+	
+	private void setupLayout()
+	{
+		
+	}
 	
 	private void updatePokedexInfo(int index)
 	{
