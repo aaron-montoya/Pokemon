@@ -35,7 +35,7 @@ public class RoyRoycen extends Pokemon implements Politician
 	
 	public int countVotes()
 	{
-		int votes = 1000000;
+		int votes = 5999;
 		return votes;
 	}
 	

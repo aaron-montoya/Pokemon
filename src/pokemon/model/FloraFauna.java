@@ -2,9 +2,30 @@ package pokemon.model;
 
 public class FloraFauna extends Pokemon implements Vegan
 {
+	public FloraFauna()
+	{
+		super(4, "FloraFauna");
+		setup();
+	}
+	
+	public FloraFauna(String name)
+	{
+		super(4, name);
+		setup();
+	}
+	
 	public FloraFauna(int number, String name)
 	{
 		super(number, name);
+		setup();
+	}
+	
+	protected void setup()
+	{
+		this.setAttackPoints(0);
+		this.setCanEvolve(false);
+		this.setEnhancementModifier(.48);
+		this.setHealthPoints(77893);
 	}
 	
 	public void eatVeganily()
