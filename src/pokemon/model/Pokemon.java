@@ -5,8 +5,7 @@ public abstract class Pokemon
 	private int healthPoints;
 	private int attackPoints;
 	private double enhancementModifier;
-	private int number;l
-
+	private int number;
 	private String name;
 	private boolean canEvolve;
 	
