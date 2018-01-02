@@ -1,6 +1,6 @@
 package pokemon.model;
 
-public class Dilophosaurus extends Pokemon implements Jurrassic
+public class Dilophosaurus extends Dilophobaby implements Jurrassic
 {
 	public Dilophosaurus(int number, String name)
 	{

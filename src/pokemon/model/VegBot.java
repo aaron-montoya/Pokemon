@@ -9,7 +9,7 @@ public class VegBot extends Pokemon implements Vegan
 	
 	public void eatVeganily()
 	{
-		
+		System.out.println("Cruelty-Free Nom");
 	}
 	
 	public String proclaimVeganism()
