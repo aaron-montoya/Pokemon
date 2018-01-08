@@ -38,7 +38,7 @@ public class PokePanel extends JPanel
 	private JPanel thirdType;
 	private JPanel fourthType;
 	
-	public PokePanel() {
+	public PokePanel(PokeController appController) {
 		super();
 		
 		//Initialize GUI Members
@@ -63,11 +63,40 @@ public class PokePanel extends JPanel
 		saveButton = new JButton("Save");
 		clearButton = new JButton("Clear");
 		pokedexDropdown = new JComboBox();
+		
+		setupPanel();
 	}
 	
 	private void setupPanel()
 	{
+		this.setBackground(Color.blue);
 		this.setLayout(appLayout);
+		
+		this.add(healthLabel);
+		this.add	(attackLabel);
+		this.add(nameLabel);
+		this.add(numberLabel);
+		this.add(evolvableLabel);
+		this.add(modifierLabel);
+		this.add(iconLabel);
+		
+		this.add(evolvableBox);
+		this.add(nameField);
+		this.add(numberField);
+		this.add(attackField);
+		this.add(healthField);
+		this.add(modifierField);
+		
+		this.add(descArea);
+		this.add(typeArea);
+		this.add(saveButton);
+		this.add(clearButton);
+		this.add(pokedexDropdown);
+		
+		this.add(firstType);
+		this.add(secondType);
+		this.add(thirdType);
+		this.add(fourthType);
 	}
 	
 	private void setupLayout()
