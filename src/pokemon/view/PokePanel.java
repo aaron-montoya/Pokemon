@@ -40,36 +40,101 @@ public class PokePanel extends JPanel
 	
 	public PokePanel(PokeController appController) {
 		super();
+		this.appController = appController;
+		
+		appLayout = new SpringLayout();
 		
 		//Initialize GUI Members
-		healthLabel = new JLabel("");
-		attackLabel = new JLabel("");
-		nameLabel = new JLabel("");
-		numberLabel = new JLabel("");
-		evolvableLabel = new JLabel("");
-		modifierLabel = new JLabel("");
-		iconLabel = new JLabel("");
-		
 		evolvableBox = new JCheckBox();
-		nameField = new JTextField(20);
-		numberField = new JTextField(20);
-		attackField = new JTextField(20);
-		healthField = new JTextField(20);
-		modifierField = new JTextField(20);
+		nameField = new JTextField("name");
+		numberField = new JTextField("##");
+		attackField = new JTextField("atk");
+		healthField = new JTextField("hp");
+		modifierField = new JTextField("mod");
 		
-		descArea = new JTextArea(10, 25);
-		typeArea = new JTextArea(10, 25);
+		iconLabel = new JLabel("", new ImageIcon(getClass().getResource("/pokemon/view/images/logo.png")), JLabel.CENTER);
 		
+		healthLabel = new JLabel("Hp");
+		attackLabel = new JLabel("Atk");
+		nameLabel = new JLabel("Name");
+		numberLabel = new JLabel("#");
+		evolvableLabel = new JLabel("Evolvable");
+		modifierLabel = new JLabel("Modifier");
+		pokedexDropdown = new JComboBox();
 		saveButton = new JButton("Save");
 		clearButton = new JButton("Clear");
-		pokedexDropdown = new JComboBox();
+		
+		descArea = new JTextArea(5, 10);
+		typeArea = new JTextArea(4, 15);
+		
+		firstType = new JPanel();
+		secondType = new JPanel();
+		thirdType = new JPanel();
+		fourthType = new JPanel();
+		
 		
 		setupPanel();
 	}
 	
+	private void setupComboBox()
+	{
+		DefaultComboBoxModel pokemonModel = new DefaultComboBoxModel(appController.convertPokedex());
+		pokedexDropdown.setModel(pokemonModel);
+	}
+	
+	private void setupTypePanels()
+	{
+		firstType.setSize(50, 50);
+		secondType.setSize(50, 50);
+		thirdType.setSize(50, 50);
+		fourthType.setSize(50, 50);
+	}
+	
+	private void updateTypePanels()
+	{
+		String[] types = appController.getPokedex().get(pokedexDropdown.getSelectedIndex()).getPokemonTypes();
+		
+		//Change this to match your 3 minimum Types in your pokedex
+		if (types[0].equals("Politician"))
+		{
+			firstType.setBackground(Color.red);
+		}
+		else if (types[0].equals("Vegan"))
+		{
+			firstType.setBackground(Color.green);
+		}
+		else if (types[0].equals("Jurassic"))
+		{
+			firstType.setBackground(Color.gray);
+		}
+		else
+		{
+			firstType.setBackground(Color.white);
+		}
+		
+		if (types.length > 1)
+		{
+			if (types[1].equals("Politician"))
+			{
+				secondType.setBackground(Color.red);
+			}
+			//...continue as above
+			
+			if (types.length == 3)
+			{
+				if (types[2].equals("Politician"))
+				{
+					thirdType.setBackground(Color.gray);
+				}
+				//...continue as above
+			}
+		}
+		//Set this for each of the different type panels
+	}
+	
 	private void setupPanel()
 	{
-		this.setBackground(Color.blue);
+		this.setBackground(Color.BLUE);
 		this.setLayout(appLayout);
 		
 		this.add(healthLabel);
@@ -97,6 +162,21 @@ public class PokePanel extends JPanel
 		this.add(secondType);
 		this.add(thirdType);
 		this.add(fourthType);
+	}
+	
+	private void setupListeners()
+	{
+		pokedexDropdown.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
+				updatePokedexInfo(selectedPokemonIndex);
+				updateImage();
+				updateTypePanels();
+				repaint();
+			}
+		});
 	}
 	
 	private void setupLayout()
