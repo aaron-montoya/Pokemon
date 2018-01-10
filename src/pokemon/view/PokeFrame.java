@@ -20,7 +20,7 @@ public class PokeFrame extends JFrame
 	{
 		this.setContentPane(appPane);
 		this.setTitle("Pakamon");
-		this.setSize(500, 500);
+		this.setSize(305, 305);
 		this.setVisible(true);
 	}
 	
