@@ -23,7 +23,7 @@ public class Dilophobaby extends Pokemon implements Jurrassic
 	protected void setup()
 	{
 		this.setAttackPoints(130);
-		this.setCanEvolve(false);
+		this.setCanEvolve(true);
 		this.setEnhancementModifier(.84);
 		this.setHealthPoints(96);
 	}
